@@ -1,6 +1,7 @@
 package org.park.javadesignpattern.adapter.example;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -12,14 +13,16 @@ import test.TEST;
 
 
 public class Properties {
+	String directoryPath = Properties.class.getResource(".").getPath();
 	String filePath = Properties.class.getResource(".").getPath()+ "/store/";
+	
 	HashMap<String, String> hashMap;
 	public Properties() {
 		hashMap = new HashMap<String, String>();
 	}
 	
 	
-	public void properReadFromFile(String filename) throws IOException {
+	public void properReadFromFile(String filename) {
 		
 		String key=null;
 		String value=null;
@@ -45,7 +48,10 @@ public class Properties {
 	
 	public void properWriteToFile(String filename) throws IOException {
 		String textData = null;
-		FileOutputStream output = new FileOutputStream(filePath + filename);
+		isMkdirStore(filePath);
+		FileOutputStream output = null;
+		try{
+		output = new FileOutputStream(filePath + filename);
 		output.write("#written by FileProperties\r\n".getBytes());
 		long time = System.currentTimeMillis();
 		SimpleDateFormat dayTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
@@ -55,7 +61,14 @@ public class Properties {
 			textData = key + "=" + hashMap.get(key) + "\r\n";
 			output.write(textData.getBytes());
 		}
-		output.close();
+		}catch(FileNotFoundException e){
+			e.printStackTrace();
+		}catch(IOException e){
+			e.printStackTrace();
+			
+		}finally{
+			if(output != null) try{output.close();}catch(IOException e){}
+		}
 	}
 	
 	public void properSetValue(String key, String value) {
@@ -69,7 +82,14 @@ public class Properties {
 		}else{
 			return value;
 		}
-	} 
+	}
+	
+	public void isMkdirStore(String path){
+		File storeDirectory = new File(path);
+		if(!storeDirectory.exists()){
+			storeDirectory.mkdirs();
+		}
+	}
 	
 
 }
