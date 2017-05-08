@@ -10,6 +10,8 @@ public class SingletonMain {
 	 * private static Singleton singleton = new Singleton();
 	 * getSingleton()을 이용하여 생성된 객체를 전달한다.
 	 * 
+	 * 메인 클래스에서는 해당 객체로 접근자체가 안됨(private 설정)
+	 * 
 	 */
 
 	public static void main(String[] args) {
