@@ -3,6 +3,10 @@ package org.park.javadesignpattern.templatemethod;
 public class TemplateMethodMain {
 	
 	/**
+	 * 
+	 * Teamplate Method 패턴은 상위크래스에서 처리의 골격을 만들고,
+	 * 하위 클래스에서 구체적인 처리의 내용을 만든다.
+	 * 
 	 * 설명: 실행계획은 최상위의 추상클래스에서 
 	 * 실행계획을 가진 메소드를 final로 구현함(하위클래스에서 접근 못하도록)
 	 * 수행될 각각의 메소드를 상위 추상클래스에서 추상메소드로 정의만하고
