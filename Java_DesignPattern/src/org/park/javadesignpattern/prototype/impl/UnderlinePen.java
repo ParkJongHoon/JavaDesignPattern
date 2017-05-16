@@ -1,8 +1,9 @@
 package org.park.javadesignpattern.prototype.impl;
 
+import org.park.javadesignpattern.prototype.framework.ConCreateProduct;
 import org.park.javadesignpattern.prototype.framework.Product;
 
-public class UnderlinePen implements Product {
+public class UnderlinePen extends ConCreateProduct {
 	private char ulchar;
 	public UnderlinePen(char ulchar) {
 		this.ulchar = ulchar;

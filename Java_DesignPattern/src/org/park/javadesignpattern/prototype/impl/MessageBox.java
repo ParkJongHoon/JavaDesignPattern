@@ -1,8 +1,9 @@
 package org.park.javadesignpattern.prototype.impl;
 
+import org.park.javadesignpattern.prototype.framework.ConCreateProduct;
 import org.park.javadesignpattern.prototype.framework.Product;
 
-public class MessageBox implements Product {
+public class MessageBox extends ConCreateProduct {
 	
 	private char decochar;
 	public MessageBox(char decochar) {
@@ -23,15 +24,6 @@ public class MessageBox implements Product {
 		System.out.println("");
 	}
 
-	@Override
-	public Product createClone() {
-		Product p = null;
-		try{
-			p = (Product)clone();
-		}catch(CloneNotSupportedException e){
-			e.printStackTrace();
-		}
-		return p;
-	}
+	
 
 }
