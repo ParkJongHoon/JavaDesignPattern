@@ -1,10 +1,13 @@
 package org.park.javadesignpattern.builder.main;
 
-import org.park.javadesignpattern.builder.Director;
+
 import org.park.javadesignpattern.builder.HTMLBuilder;
 import org.park.javadesignpattern.builder.TextBuilder;
+import org.park.javadesignpattern.builder.example.Director;
+import org.park.javadesignpattern.builder.example.HTMLBuilderInfa;
+import org.park.javadesignpattern.builder.example.TextBuilderInfa;
 
-public class BuilderMain {
+public class BuilderMain2 {
 	/**
 	 * 작성일: 2017-05-17
 	 * 작성자: 박종훈
@@ -23,13 +26,13 @@ public class BuilderMain {
 			System.exit(0);
 		}
 		if(args[0].equals("plain")){
-			TextBuilder textbuilder = new TextBuilder();
+			TextBuilderInfa textbuilder = new TextBuilderInfa();
 			Director director = new Director(textbuilder);
 			director.construct();
 			String result = textbuilder.getResult();
 			System.out.println(result);
 		}else if(args[0].equals("html")){
-			HTMLBuilder htmlbuilder = new HTMLBuilder();
+			HTMLBuilderInfa htmlbuilder = new HTMLBuilderInfa();
 			Director director = new Director(htmlbuilder);
 			director.construct();
 			String filename = htmlbuilder.getResult();
