@@ -1,11 +1,9 @@
 package org.park.javadesignpattern.builder.main;
 
 
-import org.park.javadesignpattern.builder.HTMLBuilder;
-import org.park.javadesignpattern.builder.TextBuilder;
-import org.park.javadesignpattern.builder.example.Director;
-import org.park.javadesignpattern.builder.example.HTMLBuilderInfa;
-import org.park.javadesignpattern.builder.example.TextBuilderInfa;
+
+import org.park.javadesignpattern.builder.example.ExecutePlan;
+import org.park.javadesignpattern.builder.example.InstanceManager;
 
 public class BuilderMain2 {
 	/**
@@ -19,34 +17,11 @@ public class BuilderMain2 {
 	 * 주입받은 객체에 대한 실행계획을 가진을 실행메소드를 만든다.(construct()) 
 	 * @param args
 	 */
-
-	public static void main(String[] args) {
-		if(args.length != 1){
-			usage();
-			System.exit(0);
-		}
-		if(args[0].equals("plain")){
-			TextBuilderInfa textbuilder = new TextBuilderInfa();
-			Director director = new Director(textbuilder);
-			director.construct();
-			String result = textbuilder.getResult();
-			System.out.println(result);
-		}else if(args[0].equals("html")){
-			HTMLBuilderInfa htmlbuilder = new HTMLBuilderInfa();
-			Director director = new Director(htmlbuilder);
-			director.construct();
-			String filename = htmlbuilder.getResult();
-			System.out.println(filename + "가 작성되었습니다");
-		}else{
-			usage();
-			System.exit(0);
-		}
-
-	}
 	
-	public static void usage(){
-		System.out.println("Usage: java Main plain 일반 텍스트로 문서작성");
-		System.out.println("Usage: java Main html HTML, 파일로 문서작성");
+	public static void main(String[] args) {	 
+		InstanceManager instanceManager = new InstanceManager();
+		ExecutePlan executePlan = new ExecutePlan(instanceManager);
+		executePlan.execute(args);
 	}
 
 }
