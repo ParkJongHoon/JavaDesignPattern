@@ -10,6 +10,9 @@ public class ExampleMain {
 	public static void main(String[] args) {
 		FileIO f = new FileProperties();
 			try{
+				f.readFromFile("file.txt");
+				//f.allPropertiesPrint();
+				
 				f.setValue("year", "2004");
 				f.setValue("month", "4");
 				f.setValue("day", "21");

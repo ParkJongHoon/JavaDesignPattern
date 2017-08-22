@@ -13,9 +13,10 @@ import test.TEST;
 
 
 public class Properties {
+	
 	String directoryPath = Properties.class.getResource(".").getPath();
 	String filePath = Properties.class.getResource(".").getPath()+ "/store/";
-	
+	/*
 	HashMap<String, String> hashMap;
 	public Properties() {
 		hashMap = new HashMap<String, String>();
@@ -91,5 +92,5 @@ public class Properties {
 		}
 	}
 	
-
+*/
 }

@@ -5,6 +5,14 @@ public class Director {
 	public Director(BuilderInfa builder){
 		this.builder = builder;
 	}
+	public Director() {
+	
+	}
+		
+	public void setBuilder(BuilderInfa builder) {
+		this.builder = builder;
+	}
+
 	public void construct(){
 		builder.makeTitle("Greeting");
 		builder.makeString("¾ÆÄ§°ú ³·¿¡");
