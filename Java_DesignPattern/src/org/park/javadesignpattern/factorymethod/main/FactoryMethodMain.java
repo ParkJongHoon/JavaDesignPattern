@@ -1,9 +1,11 @@
 package org.park.javadesignpattern.factorymethod.main;
 
+import org.park.javadesignpattern.factorymethod.domain.IDCard;
+import org.park.javadesignpattern.factorymethod.domain.IDCardFactory;
 import org.park.javadesignpattern.factorymethod.framework.Factory;
+import org.park.javadesignpattern.factorymethod.framework.FactoryManager;
 import org.park.javadesignpattern.factorymethod.framework.Product;
-import org.park.javadesignpattern.factorymethod.idcard.IDCard;
-import org.park.javadesignpattern.factorymethod.idcard.IDCardFactory;
+import org.park.javadesignpattern.factorymethod.framework.SingletonFactoryCreater;
 
 
 /**
@@ -26,7 +28,8 @@ import org.park.javadesignpattern.factorymethod.idcard.IDCardFactory;
 public class FactoryMethodMain {
 
 	public static void main(String[] args) {
-		Factory factory = new IDCardFactory();
+		
+		/*Factory factory = new IDCardFactory();
 		Product card1 = factory.create("홍길동");
 		Product cart2 = factory.create("이순실");
 		Product cart3 = factory.create("강감찬");
@@ -34,7 +37,16 @@ public class FactoryMethodMain {
 		card1.use();
 		cart2.use();
 		cart3.use();
+		*/
 		
+		SingletonFactoryCreater.getSingletonFactoryCreater();
+		FactoryManager factoryManager = SingletonFactoryCreater.getFactoryManager();
+		factoryManager.setFactory("IDCardFactory");
+		factoryManager.createProduct("홍길동");
+		factoryManager.createProduct("이순신");
+		factoryManager.createProduct("강감찬");
+		
+		factoryManager.betchProcess();
 	}
 
 }
