@@ -1,4 +1,4 @@
-package org.park.javadesignpattern.factorymethod.idcard;
+package org.park.javadesignpattern.factorymethod.domain;
 import org.park.javadesignpattern.factorymethod.framework.Product;
 
 public class IDCard extends Product {

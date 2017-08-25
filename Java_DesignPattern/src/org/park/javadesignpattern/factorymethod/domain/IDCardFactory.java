@@ -1,4 +1,4 @@
-package org.park.javadesignpattern.factorymethod.idcard;
+package org.park.javadesignpattern.factorymethod.domain;
 
 import java.util.*;
 
