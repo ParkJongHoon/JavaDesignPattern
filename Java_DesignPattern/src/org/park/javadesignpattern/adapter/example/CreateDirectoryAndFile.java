@@ -14,10 +14,18 @@ public class CreateDirectoryAndFile {
 	private File directory;
 	private File file;
 	
+	
 	public CreateDirectoryAndFile(){
-		makePath();
+		makeRootPath();
 		dirctoryPath = rootPath + dirctoryPath;
 		directory = new File(dirctoryPath);
+	}
+	
+	public void executePlan(){
+		makeRootPath();
+		dirctoryPath = rootPath + dirctoryPath;
+		directory = new File(dirctoryPath);
+		rootDrirectoryCreate();
 	}
 	
 	
@@ -52,7 +60,7 @@ public class CreateDirectoryAndFile {
 		return !isFile.exists();
 	} 
 	
-	public void makePath(){
+	public void makeRootPath(){
 		String thisClassPath = this.getClass().getResource(".").getPath();
 		String rootPath = null;
 		StringTokenizer st = new StringTokenizer(thisClassPath, "/");

@@ -1,8 +1,12 @@
 package org.park.javadesignpattern.builder.main;
 
+import java.util.List;
+
 import org.park.javadesignpattern.builder.Director;
 import org.park.javadesignpattern.builder.HTMLBuilder;
 import org.park.javadesignpattern.builder.TextBuilder;
+
+import tools.dynamiccreate.DynamicObjectCreater;
 
 public class BuilderMain {
 	/**
@@ -22,15 +26,18 @@ public class BuilderMain {
 			usage();
 			System.exit(0);
 		}
+		List<Object> list = DynamicObjectCreater.getList();
 		if(args[0].equals("plain")){
-			TextBuilder textbuilder = new TextBuilder();
-			Director director = new Director(textbuilder);
+			TextBuilder textbuilder = (TextBuilder)DynamicObjectCreater.newInstanceObject("TextBuilder", list);
+			list.add(textbuilder);
+			Director director = (Director)DynamicObjectCreater.newInstanceObject("Director", list);
 			director.construct();
 			String result = textbuilder.getResult();
 			System.out.println(result);
 		}else if(args[0].equals("html")){
-			HTMLBuilder htmlbuilder = new HTMLBuilder();
-			Director director = new Director(htmlbuilder);
+			HTMLBuilder htmlbuilder = (HTMLBuilder)DynamicObjectCreater.newInstanceObject("HTMLBuilder", list);
+			list.add(htmlbuilder);
+			Director director = (Director)DynamicObjectCreater.newInstanceObject("Director", list);
 			director.construct();
 			String filename = htmlbuilder.getResult();
 			System.out.println(filename + "가 작성되었습니다");

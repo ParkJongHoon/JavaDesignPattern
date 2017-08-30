@@ -2,8 +2,14 @@ package org.park.javadesignpattern.builder.main;
 
 
 
+import java.util.List;
+
 import org.park.javadesignpattern.builder.example.ExecutePlan;
 import org.park.javadesignpattern.builder.example.InstanceManager;
+
+import tools.dynamiccreate.DynamicObjectCreater;
+import tools.properties.PropertyManager;
+import tools.properties.User;
 
 public class BuilderMain2 {
 	/**
@@ -18,9 +24,12 @@ public class BuilderMain2 {
 	 * @param args
 	 */
 	
-	public static void main(String[] args) {	 
-		InstanceManager instanceManager = new InstanceManager();
-		ExecutePlan executePlan = new ExecutePlan(instanceManager);
+	public static void main(String[] args) {
+		List<Object> list = DynamicObjectCreater.getList();
+		InstanceManager instanceManager = (InstanceManager)DynamicObjectCreater.newInstanceObject("InstanceManager", list);
+		list.add(instanceManager);
+		ExecutePlan executePlan = (ExecutePlan)DynamicObjectCreater.newInstanceObject("ExecutePlan", list);
+		list.clear();
 		executePlan.execute(args);
 	}
 
