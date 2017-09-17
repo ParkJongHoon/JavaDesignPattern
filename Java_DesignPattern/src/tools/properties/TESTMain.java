@@ -10,10 +10,7 @@ import tools.dynamiccreate.DynamicObjectCreater;
 public class TESTMain {
 
 	public static void main(String[] args) throws IOException {
-		PropertyManager propertyManager = PropertyManager.getPropertyManager();
-		List list = DynamicObjectCreater.getList();
-		User user = (User)DynamicObjectCreater.newInstanceObject("User", list);
+		User user = (User)DynamicObjectCreater.newInstanceObject("User");
 		user.print();
 	}
-
 }

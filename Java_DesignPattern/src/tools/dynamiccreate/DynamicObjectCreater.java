@@ -10,16 +10,34 @@ import tools.properties.PropertyManager;
 public class DynamicObjectCreater {
 	private static List<Object> list = new ArrayList<Object>();
 	
-	public static Object newInstanceObject(String objectName, List<?> list){
+	public static Object newInstanceObject(String objectName, Object...objects){
+		list.clear();
+		int size = objects.length;
+		for(int i=0; i<size; i++){
+			list.add(objects[i]);
+		}
 		Object object = null;
-		Object[] arglist = new Object[propertiesLength(list)];
+		Object[] arglist = new Object[size];
 		@SuppressWarnings("rawtypes")
-		Class[] propertiesClass = new Class[propertiesLength(list)];
+		Class[] propertiesClass = new Class[size];
 		Iterator<?> iterator = list.iterator();
 		int num = 0;
 		while(iterator.hasNext()){
 			Object arg = iterator.next();
 			Class<? extends Object> classtype = arg.getClass().getSuperclass();
+			if(arg.getClass() == Integer.class){
+				classtype = int.class;
+			}else if(arg.getClass() == String.class){
+				classtype = String.class;
+			}else{
+				if(classtype.toString().equals("class java.lang.Object")){
+					if(null != arg.getClass().getGenericInterfaces()){
+						classtype = (Class<?>)arg.getClass().getGenericInterfaces()[0];
+					}else{
+						classtype = arg.getClass();
+					}
+				}
+			}
 			arglist[num] = arg;
 			propertiesClass[num] = classtype;
 			num++;
@@ -54,13 +72,4 @@ public class DynamicObjectCreater {
 		}
 		return object;
 	}
-	
-	public static List<Object> getList() {
-		return list;
-	}
-
-	public static int propertiesLength(List<?> list){
-		return list.size();
-	}
-
 }
