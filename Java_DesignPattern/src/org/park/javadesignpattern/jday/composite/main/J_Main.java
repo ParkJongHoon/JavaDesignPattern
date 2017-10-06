@@ -36,6 +36,8 @@ public class J_Main {
 			park.add((File)DynamicObjectCreater.newInstanceObject("File", "game.doc", 400));
 			park.add((File)DynamicObjectCreater.newInstanceObject("File", "junk.mail", 500));
 			rootdir.printList();
+			
+			System.out.println(kim.getFullName());
 		}catch(FileTreatmentException e){
 			
 		}

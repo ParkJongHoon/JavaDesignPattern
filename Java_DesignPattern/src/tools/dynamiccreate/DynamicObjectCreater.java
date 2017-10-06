@@ -22,6 +22,7 @@ public class DynamicObjectCreater {
 		Class[] propertiesClass = new Class[size];
 		Iterator<?> iterator = list.iterator();
 		int num = 0;
+		Class<? extends Object> storeClasstype = null;
 		while(iterator.hasNext()){
 			Object arg = iterator.next();
 			Class<? extends Object> classtype = arg.getClass().getSuperclass();
@@ -29,6 +30,8 @@ public class DynamicObjectCreater {
 				classtype = int.class;
 			}else if(arg.getClass() == String.class){
 				classtype = String.class;
+			}else if(arg.getClass() == Character.class){
+				classtype = char.class;
 			}else{
 				if(classtype.toString().equals("class java.lang.Object")){
 					if(null != arg.getClass().getGenericInterfaces()){
@@ -36,6 +39,13 @@ public class DynamicObjectCreater {
 					}else{
 						classtype = arg.getClass();
 					}
+				}else{
+					
+					do{
+						storeClasstype = classtype;
+						classtype = classtype.getSuperclass();
+					}while(!classtype.toString().equals("class java.lang.Object"));
+					classtype = storeClasstype;
 				}
 			}
 			arglist[num] = arg;
