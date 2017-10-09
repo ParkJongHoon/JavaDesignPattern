@@ -3,6 +3,8 @@ package org.park.javadesignpattern.lday.visitor;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import tools.dynamiccreate.DynamicObjectCreater;
+
 public class V_Directory extends V_Entry {
 	private String name;
 	private ArrayList dir = new ArrayList();
@@ -16,13 +18,9 @@ public class V_Directory extends V_Entry {
 	}
 	@Override
 	public int getSize() {
-		int size = 0;
-		Iterator it = dir.iterator();
-		while(it.hasNext()){
-			V_Entry entry = (V_Entry)it.next();
-			size += entry.getSize();
-		}
-		return size;
+		SizeVisitor v = (SizeVisitor)DynamicObjectCreater.newInstanceObject("SizeVisitor");
+		accept(v);
+		return v.getSize();
 	}
 	public V_Entry add(V_Entry entry){
 		dir.add(entry);
