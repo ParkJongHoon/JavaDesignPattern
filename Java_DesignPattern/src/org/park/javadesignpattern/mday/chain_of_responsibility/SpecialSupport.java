@@ -2,8 +2,9 @@ package org.park.javadesignpattern.mday.chain_of_responsibility;
 
 public class SpecialSupport extends Support {
 	private int number;
-	public SpecialSupport(String name) {
+	public SpecialSupport(String name, int number) {
 		super(name);
+		this.number = number;
 	}
 
 	@Override
