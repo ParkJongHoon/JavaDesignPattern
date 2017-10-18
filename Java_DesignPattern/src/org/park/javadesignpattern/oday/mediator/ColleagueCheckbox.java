@@ -10,7 +10,7 @@ public class ColleagueCheckbox extends Checkbox implements ItemListener,
 	private Mediator mediator;
 	public ColleagueCheckbox(String caption, CheckboxGroup group, 
 			boolean state) {
-		this.mediator = mediator;
+		super(caption, group, state);
 	}
 
 	@Override
@@ -26,7 +26,15 @@ public class ColleagueCheckbox extends Checkbox implements ItemListener,
 	}
 
 	@Override
-	public void itemStateChanged(ItemEvent arg0) {		// 상태가 바뀌면 Mediator에게 통지
+	public void itemStateChanged(ItemEvent arg0) {		
+		/*
+		 * ItemListener interface를 implements 로 지정할 시 구현해야 할 메소드
+		 * 본 메소드의 기능은 본 클래스가 checkbox를 상속 받았으므로
+		 * 해당 checkbox안에 있는 addItemListener라는 메소드의 인자로 
+		 * 실행할 기능을 itemStateChanged라는 메소드안에서 실행 할 수 있음
+		 */
+		
+		// 상태가 바뀌면 Mediator에게 통지
 		mediator.colleagueChanged();
 	}
 

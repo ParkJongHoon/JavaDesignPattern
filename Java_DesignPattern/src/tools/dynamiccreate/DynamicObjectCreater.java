@@ -32,6 +32,8 @@ public class DynamicObjectCreater {
 				classtype = String.class;
 			}else if(arg.getClass() == Character.class){
 				classtype = char.class;
+			}else if(arg.getClass() == Boolean.class){
+				classtype = boolean.class;
 			}else{
 				if(classtype.toString().equals("class java.lang.Object")){
 					if(null != arg.getClass().getGenericInterfaces()){
