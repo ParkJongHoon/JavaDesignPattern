@@ -5,7 +5,7 @@ import org.park.javadesignpattern.pday.observer.Observer;
 
 import tools.dynamiccreate.DynamicObjectCreater;
 
-public class P_Main {
+public class P_Main3 {
 	/**
 	 * Observer 패턴은?
 	 * 상태 변화에 따른 처리기술을 표현함
@@ -20,8 +20,10 @@ public class P_Main {
 	NumberGenerator generator = (NumberGenerator)DynamicObjectCreater.newInstanceObject("RandomNumberGenerator");
 	Observer observer1 = (Observer)DynamicObjectCreater.newInstanceObject("DigitObserver");
 	Observer observer2 = (Observer)DynamicObjectCreater.newInstanceObject("GraphObserver");
+	Observer observer3 = (Observer)DynamicObjectCreater.newInstanceObject("FrameObserver");
 	generator.addObserver(observer1);
 	generator.addObserver(observer2);
+	generator.addObserver(observer3);
 	generator.execute();
 	}
 

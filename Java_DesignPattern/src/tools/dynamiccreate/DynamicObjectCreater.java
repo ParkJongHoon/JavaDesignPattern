@@ -2,9 +2,11 @@ package tools.dynamiccreate;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import tools.properties.PropertyManager;
 
 public class DynamicObjectCreater {
@@ -36,8 +38,10 @@ public class DynamicObjectCreater {
 				classtype = boolean.class;
 			}else{
 				if(classtype.toString().equals("class java.lang.Object")){
-					if(null != arg.getClass().getGenericInterfaces()){
+					Type[] t = arg.getClass().getGenericInterfaces();
+					if(t.length != 0){
 						classtype = (Class<?>)arg.getClass().getGenericInterfaces()[0];
+							
 					}else{
 						classtype = arg.getClass();
 					}

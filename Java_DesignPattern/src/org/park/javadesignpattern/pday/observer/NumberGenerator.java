@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 public abstract class NumberGenerator {
-	private ArrayList observers = new ArrayList();		// Observer를 저장
+	private ArrayList<Observer> observers = new ArrayList<Observer>();		// Observer를 저장
 	public void addObserver(Observer observer){			// Observer를 추가
 		observers.add(observer);
 	}
@@ -14,7 +14,7 @@ public abstract class NumberGenerator {
 	}
 	
 	public void notifyObservers(){
-		Iterator it = observers.iterator();
+		Iterator<Observer> it = observers.iterator();
 		while(it.hasNext()){
 			Observer o = (Observer)it.next();
 			o.update(this);

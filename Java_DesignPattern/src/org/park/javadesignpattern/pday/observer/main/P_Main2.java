@@ -5,19 +5,9 @@ import org.park.javadesignpattern.pday.observer.Observer;
 
 import tools.dynamiccreate.DynamicObjectCreater;
 
-public class P_Main {
-	/**
-	 * Observer 패턴은?
-	 * 상태 변화에 따른 처리기술을 표현함
-	 * 1) Observer를 관리 할 클래스: NumberGenerator
-	 * 2) 숫자생성기: RandomNumberGenator
-	 * 3) 상태 표시 할 클래스: Observer (상속)--> GraphObserver, DigitObserver
-	 * @param args
-	 */
-	
-
+public class P_Main2 {
 	public static void main(String[] args) {
-	NumberGenerator generator = (NumberGenerator)DynamicObjectCreater.newInstanceObject("RandomNumberGenerator");
+	NumberGenerator generator = (NumberGenerator)DynamicObjectCreater.newInstanceObject("IncrementalNumberGenerator", 10, 50, 5);
 	Observer observer1 = (Observer)DynamicObjectCreater.newInstanceObject("DigitObserver");
 	Observer observer2 = (Observer)DynamicObjectCreater.newInstanceObject("GraphObserver");
 	generator.addObserver(observer1);
