@@ -12,6 +12,7 @@ public class V_Context {
 	public void nextToken(){
 		if(tokenizer.hasMoreTokens()){
 			currentToken = tokenizer.nextToken();
+			//System.out.println("currentToken: " + currentToken);
 		}else{
 			currentToken = null;
 		}
@@ -22,6 +23,8 @@ public class V_Context {
 	}
 	
 	public void skipToken(String token) throws ParseException{
+		// currentToken: program
+		// name: go -> token: go
 		if(!token.equals(currentToken)){
 			throw new ParseException("Warning: " + token + "is expected, "
 					+ "but " + currentToken + " is found.");

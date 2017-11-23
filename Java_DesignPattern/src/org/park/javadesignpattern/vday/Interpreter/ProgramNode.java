@@ -5,8 +5,9 @@ public class ProgramNode extends V_Node {
 	
 	@Override
 	public void parse(V_Context context) throws ParseException {
-		context.skipToken("program");
+		context.skipToken("program"); // <- skipToken일때 Token이 다음 단어로 교체됨
 		commandListNode = new CommandListNode();
+		//program go right go right go right go right end담고 있는 V_Context -> context
 		commandListNode.parse(context);
 	}
 	

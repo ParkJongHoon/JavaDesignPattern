@@ -8,12 +8,13 @@ public class RepeatCommandNode extends V_Node {
 	public void parse(V_Context context) throws ParseException {
 		context.skipToken("repeat");
 		number = context.currentNumber();
-		context.nextToken();
+		context.nextToken(); // <- skipToken일때 Token이 다음 단어로 교체됨
+		// currentToken이 유지된 상태에서 CommandListNode()를 생성함
 		commandListNode = new CommandListNode();
 		commandListNode.parse(context);
 	}
 	public String toString(){
-		return "{repeat " + number + " " + commandListNode + "]";
+		return "{repeat " + number + " " + commandListNode + "}";
 	}
 
 }

@@ -6,7 +6,8 @@ public class PrimitiveCommandNode extends V_Node {
 	@Override
 	public void parse(V_Context context) throws ParseException {
 		name = context.currentToken();
-		context.skipToken(name);
+		// name: go
+		context.skipToken(name); // <- skipToken일때 Token이 다음 단어로 교체됨
 		if(!name.equals("go") && !name.equals("right") &&
 				!name.equals("left")){
 			throw new ParseException(name + " is undefined");
