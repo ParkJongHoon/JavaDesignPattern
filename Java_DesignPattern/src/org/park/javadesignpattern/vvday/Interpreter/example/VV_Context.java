@@ -38,11 +38,14 @@ public class VV_Context implements VV_ExecutorFactory {
 		}
 		return number;
 	}
-
+	
+	
+	public void setExecutorFactory(VV_ExecutorFactory factory) {
+		this.factory = factory;
+	}
 	@Override
 	public VV_Executor createExecutor(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return factory.createExecutor(name);
 	}
 
 }
