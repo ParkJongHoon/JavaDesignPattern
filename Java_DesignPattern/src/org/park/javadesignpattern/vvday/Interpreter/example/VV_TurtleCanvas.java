@@ -43,13 +43,13 @@ public class VV_TurtleCanvas extends Canvas implements VV_ExecutorFactory {
 			newy -= length;
 			break;
 		case DIRECTION_RIGHT:
-			newy += length;
+			newx += length;
 			break;
 		case DIRECTION_DOWN:
 			newy += length;
 			break;
 		case DIRECTION_LEFT:
-			newy -= length;
+			newx -= length;
 			break;
 		default:
 			break;
@@ -70,6 +70,7 @@ public class VV_TurtleCanvas extends Canvas implements VV_ExecutorFactory {
 		}else if(name.equals("right")){
 			return new DirectionExecutor(this, RELATIVE_DIRECTION_RIGHT);
 		}else if(name.equals("left")){
+
 			return new DirectionExecutor(this, RELATIVE_DIRECTION_LEFT);
 		}else{
 			return null;

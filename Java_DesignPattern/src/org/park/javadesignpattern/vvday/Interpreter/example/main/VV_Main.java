@@ -14,7 +14,7 @@ import org.park.javadesignpattern.vvday.Interpreter.example.VV_TurtleCanvas;
 public class VV_Main extends Frame implements ActionListener {
 	private VV_TurtleCanvas canvas = new VV_TurtleCanvas(400, 400);
 	private VV_InterpreterFacade facade = new VV_InterpreterFacade(canvas);
-	private TextField programTextField = new TextField("program repeat 3 go right go left end end");
+	private TextField programTextField = new TextField("program repeat 4 go right go left go left end end");
 
 	// »ý¼ºÀÚ
 	public VV_Main(String title) {
@@ -46,7 +46,6 @@ public class VV_Main extends Frame implements ActionListener {
 	
 	private void parseAndExecute(){
 		String programText = programTextField.getText();
-		System.out.println("programText = " + programText);
 		facade.parse(programText);
 		canvas.repaint();
 	}

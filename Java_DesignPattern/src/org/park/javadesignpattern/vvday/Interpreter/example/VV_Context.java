@@ -9,7 +9,7 @@ public class VV_Context implements VV_ExecutorFactory {
 	private String currentToken;
 	public VV_Context(String text) {
 		tokenizer = new StringTokenizer(text);
-		
+		nextToken();
 	}
 	public String nextToken(){
 		if(tokenizer.hasMoreTokens()){

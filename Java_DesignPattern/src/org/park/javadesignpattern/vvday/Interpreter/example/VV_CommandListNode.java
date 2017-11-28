@@ -13,6 +13,7 @@ public class VV_CommandListNode extends VV_Node {
 				throw new VV_ParseException("Missing end");
 			}else if(context.currentToken().equals("end")){
 				context.skipToken("end");
+				break;
 			}else{
 				VV_Node commandNode = new VV_CommandNode();
 				commandNode.parse(context);
